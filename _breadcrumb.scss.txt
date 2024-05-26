@@ -1,0 +1,40 @@
+.migalhas de pão {
+  // scss-docs-start breadcrumb-css-vars
+  --#{$prefix}breadcrumb-padding-x: #{$breadcrumb-padding-x};
+  --#{$prefix}breadcrumb-padding-y: #{$breadcrumb-padding-y};
+  --#{$prefix}breadcrumb-margin-bottom: #{$breadcrumb-margin-bottom};
+  @include rfs($breadcrumb-font-size, --#{$prefix}breadcrumb-font-size);
+  --#{$prefix}breadcrumb-bg: #{$breadcrumb-bg};
+  --#{$prefix}breadcrumb-border-radius: #{$breadcrumb-border-radius};
+  --#{$prefix}breadcrumb-divider-color: #{$breadcrumb-divider-color};
+  --#{$prefix}breadcrumb-item-padding-x: #{$breadcrumb-item-padding-x};
+  --#{$prefix}breadcrumb-item-active-color: #{$breadcrumb-active-color};
+  // scss-docs-end breadcrumb-css-vars
+
+  exibição: flexível;
+  flex-wrap: envoltório;
+  preenchimento: var(--#{$prefix}breadcrumb-padding-y) var(--#{$prefix}breadcrumb-padding-x);
+  margem inferior: var(--#{$prefix}breadcrumb-margin-bottom);
+  @include font-size(var(--#{$prefix}breadcrumb-font-size));
+  estilo de lista: nenhum;
+  cor de fundo: var(--#{$prefix}breadcrumb-bg);
+  @include border-radius(var(--#{$prefix}breadcrumb-border-radius));
+}
+
+.breadcrumb-item {
+  // O separador entre trilhas de navegação (por padrão, uma barra: "/")
+  + .breadcrumb-item {
+    preenchimento à esquerda: var(--#{$prefix}breadcrumb-item-padding-x);
+
+    &::antes {
+      flutuar: esquerda; // Suprime espaçamentos embutidos e sublinhados do separador
+      preenchimento à direita: var(--#{$prefix}breadcrumb-item-padding-x);
+      cor: var(--#{$prefix}breadcrumb-divider-color);
+      conteúdo: var(--#{$prefix}breadcrumb-divider, escape-svg($breadcrumb-divider)) #{"/* rtl:"} var(--#{$prefix}breadcrumb-divider, escape-svg ($breadcrumb-divider-flipped)) #{"*/"};
+    }
+  }
+
+  &.ativo {
+    cor: var(--#{$prefix}breadcrumb-item-active-color);
+  }
+}
